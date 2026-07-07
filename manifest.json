@@ -1,0 +1,10 @@
+{
+  "name": "LethalAutoScan",
+  "version_number": "1.0.0",
+  "website_url": "https://github.com/baerchen201/LethalAutoScan",
+  "description": "Automatically terminal-scans for you at the start of a day",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2305",
+    "baer1-ChatCommandAPI-1.1.3"
+  ]
+}
