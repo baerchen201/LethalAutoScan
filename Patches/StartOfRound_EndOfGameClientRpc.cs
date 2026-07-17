@@ -7,6 +7,7 @@ internal static class StartOfRound_EndOfGameClientRpc
 {
     private static void Postfix()
     {
+        LethalAutoScan.Instance.IsValid = false;
         LethalAutoScan.Instance.DisableCurrentDay = false;
     }
 }

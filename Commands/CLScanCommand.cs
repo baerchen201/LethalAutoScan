@@ -15,6 +15,8 @@ public class CLScanCommand : Command
 
     public override void Invoke(string args)
     {
+        if (!LethalAutoScan.Instance.IsValid)
+            throw new ShipIsNotLandedException();
         Chat.PrintWarning(LethalAutoScan.Instance.GetMessage());
     }
 }

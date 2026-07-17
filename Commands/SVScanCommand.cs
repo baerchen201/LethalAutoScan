@@ -11,6 +11,8 @@ public class SVScanCommand : ServerCommand
 
     public override void Invoke(PlayerControllerB caller, string args)
     {
+        if (!LethalAutoScan.Instance.IsValid)
+            throw new ShipIsNotLandedException();
         Chat.PrintWarning(caller, LethalAutoScan.Instance.GetMessage());
     }
 }

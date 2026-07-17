@@ -14,6 +14,7 @@ public class LethalAutoScan : BaseUnityPlugin
     internal const string MOD_ID =
         $"<size=0>{MyPluginInfo.PLUGIN_GUID}-{MyPluginInfo.PLUGIN_VERSION}</size>";
 
+    internal bool IsValid;
     internal bool DisableCurrentDay;
 
     internal string CachedInteriorName = null!;
@@ -43,6 +44,7 @@ public class LethalAutoScan : BaseUnityPlugin
 
     internal void CacheItemAmounts()
     {
+        IsValid = true;
         try
         {
             CachedInteriorName = RoundManager.Instance.currentDungeonType switch
