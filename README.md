@@ -10,8 +10,6 @@
 
   <sub>*multiple messages may appear due to connection issues like high ping or different mod versions</sub>
 - Basic color customization (see ChatCommandAPI config)
-- Advanced format customization (see
-  config, [format documentation](https://learn.microsoft.com/en-us/dotnet/api/system.string.format?view=netstandard-2.1))
 
 ## Notes
 
