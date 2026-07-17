@@ -1,6 +1,6 @@
 # Features
 
-- Displays the interior, scrap amount, beehive amount and egg amounts to everyone at the start of the day
+- Displays the interior scrap amount, beehive amount and egg amounts to everyone at the start of the day
 - Works both client-side and server-side
     - If you join a lobby where only you have the mod, everyone will see your scan.
       You can use /scan to repeat the message (only for yourself)
@@ -14,8 +14,6 @@
 ## Notes
 
 For better accuracy the message can be delayed up to 15 seconds from the ship beginning to land.
-
-Do not use /scan to speed this up, that displays outdated information from the previous day.
 
 Additionally, the checks for Beehives and Eggs are currently hard-coded. This means that new outside items introduced in
 future updates or mods will count towards the normal scrap amount.
