@@ -68,7 +68,11 @@ public class LethalAutoScan : BaseUnityPlugin
 
         foreach (var item in FindObjectsByType<GrabbableObject>(FindObjectsSortMode.None))
         {
-            if (item.scrapPersistedThroughRounds || !item.itemProperties.isScrap)
+            if (
+                item.scrapPersistedThroughRounds
+                || item.itemProperties?.isScrap is not true
+                || item.isInShipRoom
+            )
                 continue;
 
             switch (item.name)
