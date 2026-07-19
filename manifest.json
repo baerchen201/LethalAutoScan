@@ -1,6 +1,6 @@
 {
   "name": "LethalAutoScan",
-  "version_number": "1.0.0",
+  "version_number": "1.0.1",
   "website_url": "https://github.com/baerchen201/LethalAutoScan",
   "description": "Automatically terminal-scans for you at the start of a day",
   "dependencies": [
