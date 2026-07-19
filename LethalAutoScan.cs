@@ -16,6 +16,7 @@ public class LethalAutoScan : BaseUnityPlugin
 
     internal bool IsValid;
     internal bool DisableCurrentDay;
+    internal bool DisableCurrentLobby;
 
     internal string CachedInteriorName = null!;
     internal uint CachedScrapAmount;

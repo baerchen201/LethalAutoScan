@@ -7,6 +7,7 @@ internal static class StartOfRound_Awake
 {
     private static void Postfix()
     {
+        LethalAutoScan.Instance.DisableCurrentLobby = false;
         LethalAutoScan.Instance.DisableCurrentDay = false;
     }
 }
