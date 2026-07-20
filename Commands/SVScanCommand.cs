@@ -6,8 +6,13 @@ namespace LethalAutoScan.Commands;
 
 public class SVScanCommand : ServerCommand
 {
-    public override string Name => CLScanCommand.NAME;
-    public override string Description => CLScanCommand.DESCRIPTION;
+    internal const string NAME = "Scan";
+
+    internal const string DESCRIPTION =
+        "Repeats the last auto-scan message (may print outdated information)";
+
+    public override string Name => NAME;
+    public override string Description => DESCRIPTION;
 
     public override void Invoke(PlayerControllerB caller, string args)
     {

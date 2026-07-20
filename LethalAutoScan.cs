@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using BepInEx;
 using BepInEx.Logging;
+using ChatCommandAPI.Utils;
 using HarmonyLib;
 using LethalAutoScan.Commands;
 using UnityEngine;
@@ -15,7 +17,9 @@ public class LethalAutoScan : BaseUnityPlugin
         $"<size=0>{MyPluginInfo.PLUGIN_GUID}-{MyPluginInfo.PLUGIN_VERSION}</size>";
 
     internal bool IsValid;
+#if !SV
     internal bool DisableCurrentDay;
+#endif
 
     internal string CachedInteriorName = null!;
     internal uint CachedScrapAmount;
@@ -31,7 +35,13 @@ public class LethalAutoScan : BaseUnityPlugin
         Logger = base.Logger;
         Instance = this;
 
+#if !SV
         _ = new CLScanCommand();
+#else
+        Logger.LogWarning(
+            "You are using the host-only version of this mod. It will not activate in any games you join"
+        );
+#endif
         _ = new SVScanCommand();
 
         Harmony ??= new Harmony(MyPluginInfo.PLUGIN_GUID);
@@ -95,5 +105,25 @@ public class LethalAutoScan : BaseUnityPlugin
     public string GetMessage()
     {
         return $"{CachedInteriorName} {(CachedScrapAmount > 0 ? CachedScrapAmount : $"<color=#ff0000>{CachedScrapAmount}</color>")} {(CachedBeehiveAmount > 0 ? CachedBeehiveAmount : $"<color=#000000aa>{CachedBeehiveAmount}</color>")}{(CachedEggAmount > 0 ? $"+{CachedEggAmount}" : null)}{MOD_ID}";
+    }
+
+    internal static IEnumerator AutoScan(RoundManager __instance)
+    {
+        yield return null;
+        var modInstance = Instance;
+        modInstance.CacheItemAmounts();
+
+#if !SV
+        if (!__instance.IsServer)
+        {
+            yield return new WaitForSecondsRealtime(
+                __instance.playersManager.localPlayerController.playerClientId
+            );
+            if (modInstance.DisableCurrentDay)
+                yield break;
+        }
+#endif
+
+        Chat.PrintGlobal(modInstance.GetMessage());
     }
 }

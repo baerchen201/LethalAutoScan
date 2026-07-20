@@ -1,3 +1,4 @@
+#if !SV
 using HarmonyLib;
 
 namespace LethalAutoScan.Patches;
@@ -10,3 +11,4 @@ internal static class StartOfRound_Awake
         LethalAutoScan.Instance.DisableCurrentDay = false;
     }
 }
+#endif

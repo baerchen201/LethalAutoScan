@@ -1,3 +1,4 @@
+#if !SV
 using HarmonyLib;
 
 namespace LethalAutoScan.Patches;
@@ -11,3 +12,4 @@ internal static class HUDManager_AddTextMessageClientRpc
             LethalAutoScan.Instance.DisableCurrentDay = true;
     }
 }
+#endif
